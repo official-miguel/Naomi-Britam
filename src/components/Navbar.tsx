@@ -41,7 +41,7 @@ export function Navbar() {
         <Link href="/#home" className="flex items-center gap-3" onClick={() => setOpen(false)} aria-label={`${site.name}, ${site.title}. Home`}>
           <span className="text-lg font-bold tracking-tight">{site.firstName}</span>
           <span aria-hidden className="h-5 w-px bg-black/20" />
-          <Image src="/britam-wordmark.png" alt="Britam" width={864} height={343} priority className="h-[22px] w-auto" />
+          <Image src="/britam-wordmark.png" alt="Britam" width={1000} height={470} priority className="h-[26px] w-auto" />
           <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] text-black/55 md:inline">Financial Advisor</span>
         </Link>
 
