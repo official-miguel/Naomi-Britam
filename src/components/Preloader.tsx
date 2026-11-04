@@ -8,9 +8,9 @@ import { site } from "@/lib/site";
 const BLUE = "#0000FF";
 const GREEN = "#00B612"; // Trillionaire Designs brand colour (requested exception to the site palette)
 
-const BOUNCE = 0.9; // seconds per bounce
+const BOUNCE = 1.4; // seconds per bounce (moderate pace)
 const CYCLE = BOUNCE * 3; // briefcase → plane → health
-const MIN_VISIBLE = 3000; // ms
+const MIN_VISIBLE = CYCLE * 1000; // ms: long enough to see all three shapes once
 const MAX_WAIT = 6000; // ms
 
 // Keyframe times for 3 bounces: land, apex, land, apex, land, apex, land
@@ -105,14 +105,7 @@ export function Preloader() {
   const reduce = useReducedMotion();
 
   useEffect(() => {
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem("preloaded") === "1";
-    } catch {}
-    if (seen) {
-      setShow(false);
-      return;
-    }
+    // Shown on every full page load, including reloads. In-site navigation does not remount it.
     document.body.style.overflow = "hidden";
     const minDone = new Promise<void>((r) => setTimeout(r, reduce ? 900 : MIN_VISIBLE));
     const loaded = new Promise<void>((r) => {
@@ -122,10 +115,7 @@ export function Preloader() {
         setTimeout(r, MAX_WAIT);
       }
     });
-    Promise.all([minDone, loaded]).then(() => {
-      try { sessionStorage.setItem("preloaded", "1"); } catch {}
-      setShow(false);
-    });
+    Promise.all([minDone, loaded]).then(() => setShow(false));
     return () => { document.body.style.overflow = ""; };
   }, [reduce]);
 

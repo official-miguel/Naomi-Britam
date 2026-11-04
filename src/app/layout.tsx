@@ -57,11 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   };
   return (
-    <html lang="en-KE" className={inter.variable} suppressHydrationWarning>
-      <head>
-        {/* Runs before first paint: returning visitors in this session never see the preloader, not even for a frame. */}
-        <script dangerouslySetInnerHTML={{ __html: `try{if(sessionStorage.getItem("preloaded")==="1")document.documentElement.classList.add("no-preloader")}catch(e){}` }} />
-      </head>
+    <html lang="en-KE" className={inter.variable}>
       <body className="font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
         <Preloader />
