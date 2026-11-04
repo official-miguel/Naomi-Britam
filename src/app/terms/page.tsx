@@ -10,7 +10,7 @@ export default function Terms() {
         <h1 className="text-4xl font-bold tracking-tightest text-black sm:text-5xl">Terms &amp; Conditions</h1>
         <p className="mt-4 rounded-xl border border-dashed border-black/25 p-3 text-sm">Draft template. Have it reviewed by a qualified professional before launch.</p>
         <h2>Nature of this website</h2>
-        <p>This is the personal website of {site.name}, an insurance advisor/agent offering Britam products. It is not the official website of Britam Holdings Plc or any Britam company. Britam names and logos are trademarks of their respective owner.</p>
+        <p>This is the personal website of {site.name}, an Executive Financial Advisor offering Britam products and services. It is not the official website of Britam Holdings Plc or any Britam company. Britam names and logos are trademarks of their respective owner.</p>
         <h2>Information only</h2>
         <p>Content is general information, not a policy document or a contract of insurance. Benefits, exclusions, limits and premiums are determined by Britam and set out in its policy wording and quotations.</p>
         <h2>Forms do not create cover</h2>

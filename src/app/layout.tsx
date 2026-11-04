@@ -8,15 +8,15 @@ import { site } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
-const title = `${site.name} | Britam Insurance Advisor in ${site.location.split(",")[0]}`;
-const description = `${site.name} is a Britam insurance advisor in ${site.location}. Get personal guidance and a quotation for motor, medical, life, travel, home, business and group insurance.`;
+const title = `${site.name} | Executive Financial Advisor, Britam, ${site.location.split(",")[0]}`;
+const description = `${site.name} is an Executive Financial Advisor at Britam in ${site.location}, serving clients across Kenya. Get personal guidance and a quotation for life, medical, motor, education, retirement, investment and business cover.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: title, template: `%s | ${site.name}, Britam Insurance Advisor` },
+  title: { default: title, template: `%s | ${site.name}, Britam Financial Advisor` },
   description,
   keywords: [
-    "Britam", "Britam Kenya", "Britam insurance agent", "Britam insurance advisor", site.name,
+    "Britam", "Britam Kenya", "Britam insurance agent", "Britam insurance advisor", "Britam financial advisor", "Executive Financial Advisor Britam", site.name,
     `Britam agent ${site.location.split(",")[0]}`, "motor insurance Kenya", "medical insurance Kenya", "life insurance Kenya", "insurance quotation Kenya",
   ],
   authors: [{ name: site.name }],
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {
         "@type": "InsuranceAgency",
         "@id": `${site.url}/#agency`,
-        name: `${site.name}, Britam Insurance Advisor`,
+        name: `${site.name}, Britam Executive Financial Advisor`,
         url: site.url,
         telephone: site.phone,
         email: site.email,

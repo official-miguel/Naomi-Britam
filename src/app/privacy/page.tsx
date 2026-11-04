@@ -10,7 +10,7 @@ export default function Privacy() {
         <h1 className="text-4xl font-bold tracking-tightest text-black sm:text-5xl">Privacy Policy</h1>
         <p className="mt-4 rounded-xl border border-dashed border-black/25 p-3 text-sm">Draft template. Have it reviewed against the Kenya Data Protection Act, 2019 and Britam&apos;s requirements before launch.</p>
         <h2>Who we are</h2>
-        <p>This website is operated by {site.name}, an insurance advisor/agent for Britam, based in {site.location}. Contact: {site.email}.</p>
+        <p>This website is operated by {site.name}, an Executive Financial Advisor at Britam, based in {site.location}. Contact: {site.email}.</p>
         <h2>What we collect</h2>
         <ul>
           <li>Details you submit in forms: name, phone number, email, and information about the cover you are interested in.</li>

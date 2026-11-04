@@ -49,7 +49,7 @@ export function Footer() {
 
         <div className="mt-14 border-t border-white/15 pt-8 text-xs leading-relaxed text-white/55">
           <p>
-            {site.name} is an independent insurance advisor/agent offering Britam products. This is a personal website and is{" "}
+            {site.name} is an Executive Financial Advisor offering Britam products and services. This is a personal website and is{" "}
             <strong className="font-semibold text-white/80">not the official website of Britam Holdings Plc or any Britam company</strong>.
             Britam and its logos are trademarks of their respective owner and are used only to describe the products offered.
             Submitting a form on this site does not create, bind or confirm insurance cover. Cover starts only when Britam accepts your

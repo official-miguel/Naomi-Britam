@@ -38,13 +38,13 @@ export function Hero() {
             Accepting new clients · {site.location}
           </motion.p>
           <motion.p {...fade(0.05)} className="mt-6 text-sm font-semibold text-black/60">
-            {site.name} · {site.title}
+            {site.name} · {site.title}, Britam
           </motion.p>
           <motion.h1 {...fade(0.1)} className="mt-3 text-[2.9rem] font-bold leading-[1.02] tracking-tightest sm:text-6xl lg:text-[4.6rem]">
             Protecting what <span className="text-brand">matters most</span> to you.
           </motion.h1>
           <motion.p {...fade(0.2)} className="mt-7 max-w-xl text-lg leading-relaxed text-black/65">
-            I&apos;m {site.firstName}, a Britam insurance advisor. I help individuals, families and businesses understand their options and choose cover that
+            I&apos;m {site.firstName}, an Executive Financial Advisor at Britam. I help individuals, families and businesses understand their options and choose cover that
             fits, in plain language and without pressure.
           </motion.p>
           <motion.div {...fade(0.3)} className="mt-9 flex flex-wrap gap-3">

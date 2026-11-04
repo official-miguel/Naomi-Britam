@@ -42,7 +42,7 @@ export function Navbar() {
           <span className="text-lg font-bold tracking-tight">{site.firstName}</span>
           <span aria-hidden className="h-5 w-px bg-black/20" />
           <Image src="/britam-wordmark.png" alt="Britam" width={864} height={343} priority className="h-[22px] w-auto" />
-          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] text-black/55 md:inline">Advisor</span>
+          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] text-black/55 md:inline">Financial Advisor</span>
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">

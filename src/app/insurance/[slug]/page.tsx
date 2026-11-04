@@ -30,7 +30,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     "@type": "Service",
     name: `Britam ${p.name}`,
     description: p.description,
-    provider: { "@type": "InsuranceAgency", name: `${site.name}, Britam Insurance Advisor`, url: site.url },
+    provider: { "@type": "InsuranceAgency", name: `${site.name}, Britam Executive Financial Advisor`, url: site.url },
     areaServed: "KE",
   };
 
