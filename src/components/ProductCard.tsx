@@ -1,17 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
+import { ProductArt } from "./ProductArt";
 import { ArrowUpRight, Check, ExternalLink } from "lucide-react";
 import type { Product } from "@/lib/products";
 
 export function ProductIllustration({ product, className = "" }: { product: Product; className?: string }) {
-  const Icon = product.icon;
   return (
     <div className={`relative overflow-hidden bg-black ${className}`} aria-hidden>
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:28px_28px]" />
-      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full border border-white/20" />
-      <div className="absolute -right-4 -top-4 h-28 w-28 rounded-full border border-brand" />
-      <div className="absolute bottom-5 left-5 grid h-16 w-16 place-items-center rounded-2xl bg-brand text-white transition duration-300 group-hover:rotate-[-6deg] group-hover:scale-105">
-        <Icon size={30} strokeWidth={1.75} />
-      </div>
+      {product.image ? (
+        <Image src={product.image} alt="" fill unoptimized sizes="(min-width:1024px) 380px, 90vw" className="object-cover transition duration-500 group-hover:scale-105" />
+      ) : (
+        <ProductArt slug={product.slug} className="h-full w-full transition duration-500 group-hover:scale-105" />
+      )}
     </div>
   );
 }

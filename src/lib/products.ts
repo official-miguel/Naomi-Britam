@@ -28,6 +28,8 @@ export type Product = {
   slug: string;
   name: string;
   icon: LucideIcon;
+  /** Optional real photo, e.g. "/products/motor.jpg" (file in /public). Replaces the illustration when set. */
+  image?: string;
   tagline: string;
   description: string;
   /** Specific Britam products/plans in this category, from the agent's supplied services & products guide. */
@@ -381,6 +383,6 @@ const authorisedSlugs = base.map((p) => p.slug);
 
 export const products: Product[] = base
   .filter((p) => authorisedSlugs.includes(p.slug))
-  .map((p) => ({ ...p, includes: includesBySlug[p.slug], purchaseUrl: envUrl(p.slug) }));
+  .map((p) => ({ ...p, image: `/products/${p.slug}.webp`, includes: includesBySlug[p.slug], purchaseUrl: envUrl(p.slug) }));
 
 export const getProduct = (slug: string) => products.find((p) => p.slug === slug);
