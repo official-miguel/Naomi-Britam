@@ -7,6 +7,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naomi-britam-advisor.vercel.app",
   name: "Naomi Kihuga",
   firstName: "Naomi",
+  /** Name shown on the loading screen. */
+  preloaderName: "Naomi Mugure",
   title: "Executive Financial Advisor",
   location: "Nairobi, Kenya", // based in Nairobi, serves clients across Kenya
   serviceArea: "Serving clients across Kenya",

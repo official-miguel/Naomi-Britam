@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { Preloader } from "@/components/Preloader";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { site } from "@/lib/site";
@@ -56,9 +57,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   };
   return (
-    <html lang="en-KE" className={inter.variable}>
+    <html lang="en-KE" className={inter.variable} suppressHydrationWarning>
+      <head>
+        {/* Runs before first paint: returning visitors in this session never see the preloader, not even for a frame. */}
+        <script dangerouslySetInnerHTML={{ __html: `try{if(sessionStorage.getItem("preloaded")==="1")document.documentElement.classList.add("no-preloader")}catch(e){}` }} />
+      </head>
       <body className="font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+        <Preloader />
         <Navbar />
         <main id="main">{children}</main>
         <Footer />

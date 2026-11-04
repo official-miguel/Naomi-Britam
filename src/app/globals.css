@@ -8,6 +8,7 @@ html { scroll-behavior: smooth; }
 body {
   @apply bg-white text-black antialiased;
 }
+.no-preloader #preloader { display: none !important; }
 section[id] { scroll-margin-top: 6rem; }
 ::selection { background: #0000ff; color: #fff; }
 

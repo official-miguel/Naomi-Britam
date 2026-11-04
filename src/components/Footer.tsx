@@ -56,7 +56,10 @@ export function Footer() {
             application and confirms the premium. Insurance in Kenya is regulated by the Insurance Regulatory Authority (IRA).
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-            <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+            <p>
+              © {new Date().getFullYear()} {site.name}. All rights reserved. Website by{" "}
+              <a href="https://trillionairedesigns.co.ke" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white hover:underline">Trillionaire Designs</a>.
+            </p>
             <div className="flex gap-6">
               <Link href="/privacy" className="hover:text-white hover:underline">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-white hover:underline">Terms &amp; Conditions</Link>
