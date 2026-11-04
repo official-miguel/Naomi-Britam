@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Briefcase, Plane, HeartPulse } from "lucide-react";
 import { site } from "@/lib/site";
+import { usePreloader } from "./PreloaderProvider";
 
 const BLUE = "#0000FF";
 const GREEN = "#00B612"; // Trillionaire Designs brand colour (requested exception to the site palette)
@@ -102,6 +103,7 @@ function BallMask() {
 
 export function Preloader() {
   const [show, setShow] = useState(true);
+  const { setDone } = usePreloader();
   const reduce = useReducedMotion();
 
   useEffect(() => {
@@ -115,9 +117,13 @@ export function Preloader() {
         setTimeout(r, MAX_WAIT);
       }
     });
-    Promise.all([minDone, loaded]).then(() => setShow(false));
+    // Start revealing the site (hero/navbar) at the same moment the curtain begins to lift.
+    Promise.all([minDone, loaded]).then(() => {
+      setDone(true);
+      setShow(false);
+    });
     return () => { document.body.style.overflow = ""; };
-  }, [reduce]);
+  }, [reduce, setDone]);
 
   useEffect(() => {
     if (!show) document.body.style.overflow = "";
@@ -125,7 +131,7 @@ export function Preloader() {
 
   return (
     <>
-      <noscript><style>{`#preloader{display:none!important}`}</style></noscript>
+      <noscript><style>{`#preloader{display:none!important}header,main *{opacity:1!important;transform:none!important}`}</style></noscript>
       <AnimatePresence>
         {show && (
           <motion.div
@@ -134,11 +140,14 @@ export function Preloader() {
             aria-live="polite"
             aria-label="Loading website"
             className="fixed inset-0 z-[100] flex flex-col items-center justify-between bg-white px-6 py-8"
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            // Curtain lifts upward while the site fades in underneath, so there is no hard cut.
+            exit={{ y: "-100%", transition: { duration: 0.95, delay: 0.2, ease: [0.76, 0, 0.24, 1] } }}
           >
             <span />
-            <div className="flex flex-col items-center text-center">
+            <motion.div
+              className="flex flex-col items-center text-center"
+              exit={{ opacity: 0, scale: 0.94, y: -10, transition: { duration: 0.4, ease: "easeIn" } }}
+            >
               {reduce ? (
                 <div className="h-[44px] w-[44px] rounded-full" style={{ background: BLUE }} aria-hidden />
               ) : (
@@ -146,12 +155,12 @@ export function Preloader() {
               )}
               <p className="mt-8 text-2xl font-bold tracking-tight text-black sm:text-3xl">{site.preloaderName}</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-black/55 sm:text-sm">{site.title}</p>
-              <Image src="/britam-wordmark.png" alt="Britam" width={1000} height={470} priority className="mt-5 h-8 w-auto" />
-            </div>
-            <p className="text-xs text-black/55">
+              <Image src="/britam-wordmark-v2.png" alt="Britam" width={1000} height={238} priority className="mt-5 h-6 w-auto max-w-none shrink-0 object-contain" />
+            </motion.div>
+            <motion.p className="text-xs text-black/55" exit={{ opacity: 0, transition: { duration: 0.3 } }}>
               Powered by{" "}
               <a href="https://trillionairedesigns.co.ke" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline" style={{ color: GREEN }}>Trillionaire Designs</a>
-            </p>
+            </motion.p>
           </motion.div>
         )}
       </AnimatePresence>

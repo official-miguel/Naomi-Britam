@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ShieldCheck, MapPin, Clock } from "lucide-react";
 import { site } from "@/lib/site";
 import { products } from "@/lib/products";
+import { usePreloader } from "./PreloaderProvider";
 
 export function Portrait({ className = "" }: { className?: string }) {
   if (site.photo) {
@@ -22,10 +23,12 @@ export function Portrait({ className = "" }: { className?: string }) {
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const { done } = usePreloader();
+  // Hold the entrance until the preloader curtain starts lifting, then stagger in.
   const fade = (d: number) => ({
     initial: reduce ? false : { opacity: 0, y: 24 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, delay: d, ease: [0.22, 1, 0.36, 1] as const },
+    animate: done ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
+    transition: { duration: 0.8, delay: done ? d + 0.35 : 0, ease: [0.22, 1, 0.36, 1] as const },
   });
 
   return (
@@ -63,7 +66,7 @@ export function Hero() {
             <div className="relative aspect-[4/4.2] overflow-hidden rounded-[1.5rem]">
               <Portrait />
               <span className="absolute right-3 top-3 rounded-xl bg-white/95 px-3 py-2 shadow-sm">
-                <Image src="/britam-wordmark.png" alt="Britam" width={1000} height={470} className="h-6 w-auto" />
+                <Image src="/britam-wordmark-v2.png" alt="Britam" width={1000} height={238} className="h-5 w-auto max-w-none shrink-0 object-contain" />
               </span>
             </div>
             <div className="px-3 pb-3 pt-5">

@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, site } from "@/lib/site";
+import { usePreloader } from "./PreloaderProvider";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { done } = usePreloader();
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 12);
@@ -18,17 +20,22 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (open) document.body.style.overflow = "hidden";
     const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", esc);
     return () => {
       window.removeEventListener("keydown", esc);
-      document.body.style.overflow = "";
+      if (open) document.body.style.overflow = "";
     };
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={done ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+      transition={{ duration: 0.7, delay: done ? 0.45 : 0, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4"
+    >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-black focus:px-4 focus:py-2 focus:text-white">
         Skip to content
       </a>
@@ -41,23 +48,23 @@ export function Navbar() {
         <Link href="/#home" className="flex items-center gap-3" onClick={() => setOpen(false)} aria-label={`${site.name}, ${site.title}. Home`}>
           <span className="text-lg font-bold tracking-tight">{site.firstName}</span>
           <span aria-hidden className="h-5 w-px bg-black/20" />
-          <Image src="/britam-wordmark.png" alt="Britam" width={1000} height={470} priority className="h-[26px] w-auto" />
-          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] text-black/55 md:inline">Financial Advisor</span>
+          <Image src="/britam-wordmark-v2.png" alt="Britam" width={1000} height={238} priority className="h-[20px] w-auto max-w-none shrink-0 object-contain" />
+          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] whitespace-nowrap text-black/55 xl:inline">Financial Advisor</span>
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
             <li key={n.href}>
-              <Link href={n.href} className="group relative rounded-full px-4 py-2 text-sm font-medium text-black/70 transition hover:text-black">
+              <Link href={n.href} className="group relative whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-black/70 transition hover:text-black xl:px-4">
                 {n.label}
-                <span className="absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2">
-          <Link href="/quote" className="btn btn-primary !px-5 !py-2.5 !text-sm">
+          <Link href="/quote" className="btn btn-primary shrink-0 whitespace-nowrap !px-5 !py-2.5 !text-sm">
             Get Insured <ArrowUpRight size={16} aria-hidden />
           </Link>
           <button
@@ -99,6 +106,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

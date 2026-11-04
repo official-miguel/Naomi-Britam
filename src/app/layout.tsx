@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Preloader } from "@/components/Preloader";
+import { PreloaderProvider } from "@/components/PreloaderProvider";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { site } from "@/lib/site";
@@ -61,11 +62,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-KE" className={inter.variable}>
       <body className="font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+        <PreloaderProvider>
         <Preloader />
         <Navbar />
         <main id="main">{children}</main>
         <Footer />
         <WhatsAppButton />
+        </PreloaderProvider>
       </body>
     </html>
   );
