@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -37,9 +38,11 @@ export function Navbar() {
           scrolled ? "border-black/15 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" : "border-black/10"
         }`}
       >
-        <Link href="/#home" className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
+        <Link href="/#home" className="flex items-center gap-3" onClick={() => setOpen(false)} aria-label={`${site.name}, ${site.title}. Home`}>
           <span className="text-lg font-bold tracking-tight">{site.firstName}</span>
-          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] text-brand sm:inline">Britam Advisor</span>
+          <span aria-hidden className="h-5 w-px bg-black/20" />
+          <Image src="/britam-wordmark.png" alt="Britam" width={864} height={343} priority className="h-[22px] w-auto" />
+          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] text-black/55 md:inline">Advisor</span>
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">

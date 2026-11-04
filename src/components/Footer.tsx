@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { nav, site } from "@/lib/site";
 import { products } from "@/lib/products";
 
@@ -10,6 +11,9 @@ export function Footer() {
       <div className="container-page py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
+            <span className="mb-6 inline-block rounded-2xl bg-white px-4 py-3">
+              <Image src="/britam-logo.png" alt="Britam: with you every step of the way" width={864} height={520} className="h-14 w-auto" />
+            </span>
             <p className="text-2xl font-bold tracking-tight">{site.name}</p>
             <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-white/60">{site.title}</p>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">

@@ -60,7 +60,12 @@ export function Hero() {
 
         <motion.div {...fade(0.2)} className="relative mx-auto w-full max-w-md lg:max-w-none">
           <div className="on-dark overflow-hidden rounded-[2rem] bg-black p-3 text-white shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)]">
-            <div className="relative aspect-[4/4.2] overflow-hidden rounded-[1.5rem]"><Portrait /></div>
+            <div className="relative aspect-[4/4.2] overflow-hidden rounded-[1.5rem]">
+              <Portrait />
+              <span className="absolute right-3 top-3 rounded-xl bg-white/95 px-3 py-2 shadow-sm">
+                <Image src="/britam-wordmark.png" alt="Britam" width={864} height={343} className="h-5 w-auto" />
+              </span>
+            </div>
             <div className="px-3 pb-3 pt-5">
               <p className="text-xl font-bold tracking-tight">{site.name}</p>
               <p className="text-sm text-white/60">{site.title}</p>
