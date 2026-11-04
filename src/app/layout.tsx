@@ -27,7 +27,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };
 
-export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
+// colorScheme "only light" stops phones from auto-darkening the site in dark mode.
+export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1, colorScheme: "only light" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const ld = {
