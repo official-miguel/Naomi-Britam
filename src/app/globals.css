@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  @apply bg-white text-black antialiased;
+}
+section[id] { scroll-margin-top: 6rem; }
+::selection { background: #0000ff; color: #fff; }
+
+:focus-visible { outline: 2px solid #0000ff; outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: #fff; }
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-page px-5 sm:px-8; }
+  .eyebrow { @apply mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand; }
+  .eyebrow::before { content: ""; @apply h-px w-6 bg-current; }
+  .h-section { @apply text-4xl font-bold leading-[1.05] tracking-tightest sm:text-5xl lg:text-[3.5rem]; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-semibold transition duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply bg-brand text-white hover:bg-black; }
+  .btn-dark { @apply bg-black text-white hover:bg-brand; }
+  .btn-outline { @apply border border-black/20 bg-white text-black hover:border-black hover:bg-black hover:text-white; }
+  .btn-outline-dark { @apply border border-white/25 text-white hover:border-white hover:bg-white hover:text-black; }
+  .input { @apply w-full rounded-xl border border-black/20 bg-white px-4 py-3.5 text-base text-black transition placeholder:text-black/40 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/15; }
+  .input[aria-invalid="true"] { @apply border-black ring-4 ring-black/10; }
+  .label { @apply mb-1.5 block text-sm font-semibold; }
+}
