@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { products } from "@/lib/products";
 
@@ -56,15 +57,32 @@ export function Footer() {
             application and confirms the premium. Insurance in Kenya is regulated by the Insurance Regulatory Authority (IRA).
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-            <p>
-              © {new Date().getFullYear()} {site.name}. All rights reserved. Website by{" "}
-              <a href="https://trillionairedesigns.co.ke" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white hover:underline">Trillionaire Designs</a>.
-            </p>
+            <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
             <div className="flex gap-6">
               <Link href="/privacy" className="hover:text-white hover:underline">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-white hover:underline">Terms &amp; Conditions</Link>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="border-t border-white/15 bg-white/[0.04]">
+        <div className="container-page flex flex-col items-center justify-between gap-3 py-5 text-center sm:flex-row sm:text-left">
+          <p className="text-sm text-white/70">
+            Designed &amp; developed by{" "}
+            <a href="https://trillionairedesigns.co.ke" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline" style={{ color: "#00B612" }}>
+              Trillionaire Designs
+            </a>
+          </p>
+          <a
+            href="https://trillionairedesigns.co.ke"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition hover:bg-[#00B612] hover:text-black"
+            style={{ borderColor: "#00B612", color: "#00B612" }}
+          >
+            Need a website like this? Let&apos;s talk <ArrowUpRight size={14} aria-hidden />
+          </a>
         </div>
       </div>
     </footer>
