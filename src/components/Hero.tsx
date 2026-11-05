@@ -40,12 +40,13 @@ export function Hero() {
             <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" /><span className="relative inline-flex h-2 w-2 rounded-full bg-brand" /></span>
             Accepting new clients · {site.location}
           </motion.p>
-          <motion.p {...fade(0.05)} className="mt-6 text-sm font-semibold text-black/60">
-            {site.name} · {site.title}, Britam
-          </motion.p>
-          <motion.h1 {...fade(0.1)} className="mt-3 text-[2.9rem] font-bold leading-[1.02] tracking-tightest sm:text-6xl lg:text-[4.6rem]">
-            Protecting what <span className="text-brand">matters most</span> to you.
+          {/* The h1 carries the name + Britam keywords; the large slogan below is visual only. */}
+          <motion.h1 {...fade(0.05)} className="mt-6 text-sm font-semibold text-black/60">
+            {site.fullDisplayName} · Britam {site.title}, {site.location.split(",")[0]}
           </motion.h1>
+          <motion.p {...fade(0.1)} className="mt-3 text-[2.9rem] font-bold leading-[1.02] tracking-tightest sm:text-6xl lg:text-[4.6rem]">
+            Protecting what <span className="text-brand">matters most</span> to you.
+          </motion.p>
           <motion.p {...fade(0.2)} className="mt-7 max-w-xl text-lg leading-relaxed text-black/65">
             I&apos;m {site.firstName}, an Executive Financial Advisor at Britam. I help individuals, families and businesses understand their options and choose cover that
             fits, in plain language and without pressure.

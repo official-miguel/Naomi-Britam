@@ -4,9 +4,15 @@
  * (or set via environment variables) before launch.
  */
 export const site = {
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naomi-britam-advisor.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naomibritam.co.ke",
+  /** Profile URLs (LinkedIn, Instagram, etc.) that help Google tie this site to Naomi. Comma-separated env var. */
+  sameAs: (process.env.NEXT_PUBLIC_SAME_AS ?? "").split(",").map((s) => s.trim()).filter(Boolean),
   name: "Naomi Kihuga",
   firstName: "Naomi",
+  /** Other names people search for; added to SEO keywords and schema alternateName. */
+  altNames: ["Naomi Mugure", "Naomi Kihuga"],
+  /** Full legal name, used in visible headings, titles and schema so all name variants rank. */
+  fullDisplayName: "Naomi Mugure Kihuga",
   /** Name shown on the loading screen. */
   preloaderName: "Naomi Mugure",
   title: "Executive Financial Advisor",
@@ -27,8 +33,10 @@ export const nav = [
   { label: "Home", href: "/#home" },
   { label: "About", href: "/#about" },
   { label: "Insurance Solutions", href: "/#solutions" },
+  { label: "Britam Guide", href: "/britam-insurance" },
   { label: "How It Works", href: "/#how-it-works" },
-  { label: "Testimonials", href: "/#testimonials" },
+  // wideOnly: hidden in the desktop bar below 1536px so the bar fits at laptop widths (still in the mobile menu and footer).
+  { label: "Testimonials", href: "/#testimonials", wideOnly: true },
   { label: "Contact", href: "/#contact" },
 ];
 

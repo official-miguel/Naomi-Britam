@@ -14,8 +14,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const p = getProduct(params.slug);
   if (!p) return {};
   return {
-    title: `${p.name} in Kenya`,
-    description: `${p.tagline} Learn about Britam ${p.name.toLowerCase()} and request a quotation from ${site.name}.`,
+    title: `Britam ${p.name} in Kenya`,
+    description: `${p.tagline} Learn about Britam ${p.name.toLowerCase()} in Kenya and request a quotation from ${site.name}, Britam ${site.title} in ${site.location.split(",")[0]}.`,
     alternates: { canonical: `/insurance/${p.slug}` },
     openGraph: { title: `${p.name} | ${site.name}`, description: p.description, url: `/insurance/${p.slug}` },
   };
@@ -25,13 +25,30 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const p = getProduct(params.slug);
   if (!p) notFound();
   const related = products.filter((x) => x.slug !== p.slug).slice(0, 3);
+  const pageUrl = `${site.url}/insurance/${p.slug}`;
   const ld = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    name: `Britam ${p.name}`,
-    description: p.description,
-    provider: { "@type": "InsuranceAgency", name: `${site.name}, Britam Executive Financial Advisor`, url: site.url },
-    areaServed: "KE",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${pageUrl}#service`,
+        name: `Britam ${p.name}`,
+        serviceType: p.name,
+        description: p.description,
+        url: pageUrl,
+        provider: { "@id": `${site.url}/#agency` },
+        brand: { "@type": "Brand", name: "Britam" },
+        areaServed: { "@type": "Country", name: "Kenya" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+          { "@type": "ListItem", position: 2, name: "Insurance Solutions", item: `${site.url}/#solutions` },
+          { "@type": "ListItem", position: 3, name: p.name, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (

@@ -54,7 +54,7 @@ export function Navbar() {
 
         <ul className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
-            <li key={n.href}>
+            <li key={n.href} className={"wideOnly" in n && n.wideOnly ? "hidden 2xl:block" : undefined}>
               <Link href={n.href} className="group relative whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-black/70 transition hover:text-black xl:px-4">
                 {n.label}
                 <span className="absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
