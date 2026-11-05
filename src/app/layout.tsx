@@ -41,7 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: site.name,
         jobTitle: site.title,
         url: site.url,
-        worksFor: { "@type": "Organization", name: "Britam" },
+        image: `${site.url}/naomi.jpg`,
+        worksFor: { "@type": "Organization", name: "Britam", logo: `${site.url}/britam-logo-v2.png` },
         address: { "@type": "PostalAddress", addressLocality: site.location.split(",")[0], addressCountry: "KE" },
       },
       {
@@ -49,6 +50,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         "@id": `${site.url}/#agency`,
         name: `${site.name}, Britam Executive Financial Advisor`,
         url: site.url,
+        image: [`${site.url}/naomi.jpg`, `${site.url}/britam-logo-v2.png`],
+        logo: `${site.url}/britam-logo-v2.png`,
         telephone: site.phone,
         email: site.email,
         areaServed: { "@type": "Country", name: "Kenya" },
