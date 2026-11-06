@@ -41,14 +41,14 @@ export function Navbar() {
       </a>
       <nav
         aria-label="Primary"
-        className={`mx-auto flex max-w-page items-center justify-between rounded-full border bg-white/90 py-2 pl-5 pr-2 backdrop-blur-md transition-all duration-300 ${
+        className={`mx-auto flex max-w-page items-center justify-between rounded-full border bg-white/90 py-1.5 pl-3.5 pr-1.5 backdrop-blur-md sm:py-2 sm:pl-5 sm:pr-2 transition-all duration-300 ${
           scrolled ? "border-black/15 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" : "border-black/10"
         }`}
       >
-        <Link href="/#home" className="flex items-center gap-3" onClick={() => setOpen(false)} aria-label={`${site.name}, ${site.title}. Home`}>
-          <span className="text-lg font-bold tracking-tight">{site.firstName}</span>
+        <Link href="/#home" className="flex min-w-0 items-center gap-2 sm:gap-3" onClick={() => setOpen(false)} aria-label={`${site.name}, ${site.title}. Home`}>
+          <span className="text-[15px] font-bold tracking-tight sm:text-lg">{site.firstName}</span>
           <span aria-hidden className="h-5 w-px bg-black/20" />
-          <Image src="/britam-wordmark-v2.png" alt="Britam" width={1000} height={238} priority className="h-[20px] w-auto max-w-none shrink-0 object-contain" />
+          <Image src="/britam-wordmark-v2.png" alt="Britam" width={1000} height={238} priority className="h-[16px] w-auto max-w-none shrink-0 sm:h-[20px] object-contain" />
           <span className="hidden text-[11px] font-semibold uppercase tracking-[0.14em] whitespace-nowrap text-black/55 xl:inline">Financial Advisor</span>
         </Link>
 
@@ -63,9 +63,9 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
-          <Link href="/quote" className="btn btn-primary shrink-0 whitespace-nowrap !px-5 !py-2.5 !text-sm">
-            Get Insured <ArrowUpRight size={16} aria-hidden />
+        <div className="flex shrink-0 items-center gap-2">
+          <Link href="/quote" className="btn btn-primary shrink-0 whitespace-nowrap !px-3.5 !py-2 !text-[13px] sm:!px-5 sm:!py-2.5 sm:!text-sm">
+            Get Insured <ArrowUpRight size={16} aria-hidden className="hidden sm:block" />
           </Link>
           <button
             type="button"
@@ -73,7 +73,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((o) => !o)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-black/15 lg:hidden"
+            className="grid h-9 w-9 shrink-0 sm:h-10 sm:w-10 place-items-center rounded-full border border-black/15 lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
