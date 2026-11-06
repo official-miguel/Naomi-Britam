@@ -23,6 +23,9 @@ ${products.map((p) => `- [Britam ${p.name}](${site.url}/insurance/${p.slug}): ${
 ## Guides
 - [Britam Insurance in Kenya: products, quotes and a Britam advisor](${site.url}/britam-insurance)
 
+## Client reviews
+- [Reviews of ${site.fullDisplayName}](${site.url}/reviews)
+
 ## Get a quotation
 - [Request a Britam insurance quote](${site.url}/quote)
 

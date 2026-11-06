@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ArrowRight, ChevronRight, MessageCircle } from "lucide-react";
 import { products } from "@/lib/products";
 import { site, waLink } from "@/lib/site";
+import { sharePreview } from "@/lib/seo";
 
 const city = site.location.split(",")[0];
 const pageTitle = "Britam Insurance Kenya: Products, Quotes & a Britam Advisor";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   title: { absolute: `${pageTitle} | ${site.fullDisplayName}` },
   description: pageDesc,
   alternates: { canonical: "/britam-insurance" },
-  openGraph: { title: pageTitle, description: pageDesc, url: "/britam-insurance", type: "article" },
+  ...sharePreview({ title: pageTitle, description: `Britam motor, medical, life, education and retirement cover explained, with free quotes from ${site.fullDisplayName}.`, path: "/britam-insurance", type: "article" }),
 };
 
 const guideFaqs = [

@@ -8,24 +8,29 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { site } from "@/lib/site";
 import { products } from "@/lib/products";
+import { sharePreview } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 const title = `${site.fullDisplayName} | Britam Executive Financial Advisor, ${site.location.split(",")[0]}`;
 const description = `${site.fullDisplayName} is an Executive Financial Advisor at Britam in ${site.location}, serving clients across Kenya. Get personal guidance and a quotation for life, medical, motor, education, retirement, investment and business cover.`;
 
+// Link previews (WhatsApp, Facebook, LinkedIn, X, Telegram, iMessage) show ~2 lines, so keep these short.
+// The preview image and tags come from sharePreview() in src/lib/seo.ts; every page must use it.
+const shareTitle = `${site.fullDisplayName} · Britam Executive Financial Advisor`;
+const shareDescription = `Honest advice and free Britam quotes for motor, medical, life, education and retirement cover. Based in ${site.location.split(",")[0]}, serving all of Kenya.`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: title, template: `%s | ${site.name}, Britam Financial Advisor` },
+  title: { default: title, template: `%s | ${site.fullDisplayName}, Britam Financial Advisor` },
   description,
   keywords: [
     "Britam", "Britam Kenya", "Britam insurance agent", "Britam insurance advisor", "Britam financial advisor", "Executive Financial Advisor Britam", site.fullDisplayName, ...site.altNames, ...site.altNames.map((n) => `${n} Britam`), "Naomi Britam",
     `Britam agent ${site.location.split(",")[0]}`, "motor insurance Kenya", "medical insurance Kenya", "life insurance Kenya", "insurance quotation Kenya",
   ],
-  authors: [{ name: site.name }],
+  authors: [{ name: site.fullDisplayName }],
   alternates: { canonical: "/" },
-  openGraph: { type: "website", locale: "en_KE", url: site.url, siteName: site.name, title, description },
-  twitter: { card: "summary_large_image", title, description },
+  ...sharePreview({ title: shareTitle, description: shareDescription, path: "/" }),
   verification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION } : undefined,
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };

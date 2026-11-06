@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { AlertCircle, ArrowLeft, ArrowRight, Check, CheckCircle2, ExternalLink, Loader2, MessageCircle } from "lucide-react";
 import { products, getProduct } from "@/lib/products";
 import { site, waLink } from "@/lib/site";
+import { QuickRate } from "./QuickRate";
 import { submitLead, validateContact, type LeadResult } from "@/lib/lead";
 
 const steps = ["Product", "About you", "Details", "Review"];
@@ -114,6 +115,11 @@ export function QuoteWizard({ initialProduct }: { initialProduct?: string }) {
             Continue to Britam&apos;s authorised purchase page <ExternalLink size={16} aria-hidden />
           </a>
         )}
+        <div className="mt-8 rounded-2xl bg-neutral-50 p-5 sm:p-6">
+          <h3 className="font-bold">How was your experience so far?</h3>
+          <p className="mt-1 text-sm text-black/60">Tap a star to leave a quick review of {site.firstName} and Britam. It helps other clients choose with confidence.</p>
+          <div className="mt-3"><QuickRate product={product.name} /></div>
+        </div>
         <div className="mt-8"><Link href="/" className="font-semibold text-brand underline">Back to home</Link></div>
       </div>
     );

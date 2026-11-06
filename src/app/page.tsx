@@ -3,10 +3,13 @@ import { About } from "@/components/About";
 import { Solutions } from "@/components/Solutions";
 import { WhyMe } from "@/components/WhyMe";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Testimonials } from "@/components/Testimonials";
+import { Reviews } from "@/components/Reviews";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { faqs } from "@/lib/site";
+
+// Re-check for new reviews every 5 minutes (new reviews also refresh instantly via revalidateTag).
+export const revalidate = 300;
 
 export default function Home() {
   const faqLd = {
@@ -22,7 +25,7 @@ export default function Home() {
       <Solutions />
       <WhyMe />
       <HowItWorks />
-      <Testimonials />
+      <Reviews />
       <FAQ />
       <Contact />
     </>

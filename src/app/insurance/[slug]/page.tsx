@@ -5,6 +5,7 @@ import { ArrowUpRight, Check, ChevronRight, ExternalLink, FileText, MessageCircl
 import { getProduct, products } from "@/lib/products";
 import { ProductIllustration } from "@/components/ProductCard";
 import { site, waLink } from "@/lib/site";
+import { sharePreview } from "@/lib/seo";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -17,7 +18,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: `Britam ${p.name} in Kenya`,
     description: `${p.tagline} Learn about Britam ${p.name.toLowerCase()} in Kenya and request a quotation from ${site.name}, Britam ${site.title} in ${site.location.split(",")[0]}.`,
     alternates: { canonical: `/insurance/${p.slug}` },
-    openGraph: { title: `${p.name} | ${site.name}`, description: p.description, url: `/insurance/${p.slug}` },
+    ...sharePreview({ title: `Britam ${p.name} · ${site.fullDisplayName}`, description: `${p.tagline} Get a free Britam quote from ${site.firstName}.`, path: `/insurance/${p.slug}` }),
   };
 }
 

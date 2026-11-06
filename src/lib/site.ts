@@ -30,23 +30,19 @@ export const site = {
 };
 
 export const nav = [
-  { label: "Home", href: "/#home" },
+  // wideOnly: hidden in the desktop bar below 1536px so the bar fits at laptop widths (still in the mobile menu and footer). The logo links home.
+  { label: "Home", href: "/#home", wideOnly: true },
   { label: "About", href: "/#about" },
   { label: "Insurance Solutions", href: "/#solutions" },
   { label: "Britam Guide", href: "/britam-insurance" },
   { label: "How It Works", href: "/#how-it-works" },
-  // wideOnly: hidden in the desktop bar below 1536px so the bar fits at laptop widths (still in the mobile menu and footer).
-  { label: "Testimonials", href: "/#testimonials", wideOnly: true },
+  { label: "Reviews", href: "/#reviews" },
   { label: "Contact", href: "/#contact" },
 ];
 
 export function waLink(message: string) {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
-
-/** Real testimonials only. Leave empty until the agent supplies genuine ones. */
-export type Testimonial = { quote: string; name: string; context?: string };
-export const testimonials: Testimonial[] = [];
 
 /** Real figures only. Leave empty until verified numbers are provided. */
 export const stats: { value: string; label: string }[] = [];
